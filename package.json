@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "prember-addon"
   ],
   "repository": "",
   "license": "MIT",
@@ -21,7 +22,11 @@
     "test:all": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^7.1.2"
+    "broccoli-funnel": "^2.0.2",
+    "broccoli-stew": "^2.1.0",
+    "ember-cli-babel": "^7.1.2",
+    "ember-cli-htmlbars": "^3.0.0",
+    "reveal.js": "^3.8.0"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.6.3",
@@ -29,7 +34,6 @@
     "ember-cli": "~3.9.0",
     "ember-cli-dependency-checker": "^3.1.0",
     "ember-cli-eslint": "^4.2.3",
-    "ember-cli-htmlbars": "^3.0.0",
     "ember-cli-htmlbars-inline-precompile": "^1.0.3",
     "ember-cli-inject-live-reload": "^1.8.2",
     "ember-cli-sri": "^2.1.1",
@@ -53,6 +57,7 @@
     "node": "6.* || 8.* || >= 10.*"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "before": "broccoli-asset-rev"
   }
 }

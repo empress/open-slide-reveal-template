@@ -1,0 +1,25 @@
+<div class="reveal">
+	<div class="slides">
+    {{#each @slides as |slide|}}
+      <section data-markdown>
+        <textarea data-template>
+{{slide.content}}
+
+{{#if slide.notes}}
+Note:
+{{slide.notes}}
+{{/if}}
+        </textarea>
+      </section>
+    {{/each}}
+	</div>
+</div>
+
+
+<script>
+  if(typeof FastBoot === 'undefined') {
+    Reveal.initialize({
+      hash: true,
+    });
+  }
+</script>
