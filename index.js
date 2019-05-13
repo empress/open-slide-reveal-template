@@ -16,6 +16,7 @@ module.exports = {
         'js/reveal.js',
         'plugin/markdown/marked.js',
         'plugin/markdown/markdown.js',
+        'plugin/highlight/highlight.js'
       ]
     });
 
@@ -33,14 +34,15 @@ module.exports = {
       }
     }
 
-    // this file will be loaded in FastBoot but will not be eval'd
+    let revealOptions = this.options.reveal || {};
+
     this.import('vendor/js/reveal.js');
-    this.import('vendor/plugin/markdown/marked.js');
-    this.import('vendor/plugin/markdown/markdown.js');
 
     app.import('node_modules/reveal.js/css/reset.css');
     app.import('node_modules/reveal.js/css/reveal.css');
-    app.import('node_modules/reveal.js/css/theme/beige.css')
+
+    app.import(`node_modules/reveal.js/css/theme/${revealOptions.theme || 'black'}.css`)
+    app.import(`node_modules/reveal.js/lib/css/${revealOptions.highlightTheme || 'monokai'}.css`)
   },
 
   treeForPublic() {
