@@ -32,6 +32,10 @@ module.exports = {
       app.options.fingerprint = {
         exclude: ['plugin/*/*.js']
       }
+    } else {
+      app.options.fingerprint.exclude = app.options.fingerprint.exclude || [];
+
+      app.options.fingerprint.exclude.push('plugin/*/*.js');
     }
 
     let revealOptions = this.options.reveal || {};
