@@ -26,6 +26,7 @@
     "broccoli-stew": "^2.1.0",
     "ember-cli-babel": "^7.1.2",
     "ember-cli-htmlbars": "^3.0.0",
+    "recast": "^0.17.6",
     "reveal.js": "^3.8.0"
   },
   "devDependencies": {
