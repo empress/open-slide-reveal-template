@@ -6,7 +6,7 @@ const { types: { builders } } = recast;
 const { readFileSync, writeFileSync } = require('fs');
 
 module.exports = {
-  description: 'Default blueprint for open-slide-reveal-template',
+  description: 'Default blueprint for open-slide-simplabs-template',
 
   normalizeEntityName() {
     // no-op

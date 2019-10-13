@@ -1,4 +1,4 @@
-open-slide-reveal-template
+open-slide-simplabs-template
 ==============================================================================
 
 [Short description of the addon.]
@@ -15,7 +15,7 @@ Installation
 ------------------------------------------------------------------------------
 
 ```
-ember install open-slide-reveal-template
+ember install open-slide-simplabs-template
 ```
 
 
