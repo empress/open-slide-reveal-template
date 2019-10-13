@@ -45,8 +45,14 @@ module.exports = {
     app.import('node_modules/reveal.js/css/reset.css');
     app.import('node_modules/reveal.js/css/reveal.css');
 
-    app.import(`node_modules/reveal.js/css/theme/${revealOptions.theme || 'black'}.css`)
+    app.import('vendor/simplabs.css')
     app.import(`node_modules/reveal.js/lib/css/${revealOptions.highlightTheme || 'monokai'}.css`)
+  },
+
+  contentFor: function(type){
+    if (type === 'head'){
+      return `<link rel='stylesheet' types='text/css' href='https://fonts.googleapis.com/css?family=Nunito+Sans:300,700'>`;
+    }
   },
 
   treeForPublic() {

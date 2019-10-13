@@ -1,7 +1,7 @@
 <div class="reveal">
 	<div class="slides">
     {{#each @slides as |slide|}}
-      <section data-markdown>
+      <section data-markdown data-transition="none">
         <textarea data-template>
 {{slide.content}}
 
@@ -19,6 +19,10 @@ Note:
 <script>
   if(typeof FastBoot === 'undefined') {
     Reveal.initialize({
+      width: "1280",
+			height: "720",
+			margin: 0.1,
+			center: false,
       hash: true,
       dependencies: [
 					{ src: '/plugin/markdown/marked.js' },
