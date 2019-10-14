@@ -282,7 +282,8 @@ body {
   margin: 0;
   background: none;
   border: 0;
-  box-shadow: 0; }
+  box-shadow: none;
+  max-height: 500px; }
 
 .reveal section {
   flex-direction: column;
