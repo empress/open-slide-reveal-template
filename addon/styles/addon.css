@@ -276,14 +276,14 @@ body {
 .reveal .slides > section h4:first-child {
   text-align: left;
   position: absolute;
-  top: 20px; }
+  top: 0px; }
 
 .reveal section img {
   margin: 0;
   background: none;
   border: 0;
   box-shadow: none;
-  max-height: 500px; }
+  max-height: 550px; }
 
 .reveal section {
   flex-direction: column;
