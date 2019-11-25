@@ -4,6 +4,7 @@ const recast = require('recast');
 const { types: { builders } } = recast;
 
 const { readFileSync, writeFileSync } = require('fs');
+const { join } = require('path');
 
 module.exports = {
   description: 'Default blueprint for open-slide-simplabs-template',
@@ -14,9 +15,11 @@ module.exports = {
 
   afterInstall() {
     let configFile = './config/environment.js'
+    let optionalFeatureFile = join(process.cwd(), 'config/optional-features.json');
 
     if(this.project.isEmberCLIAddon()) {
       configFile = './tests/dummy/config/environment.js';
+      optionalFeatureFile = join(process.cwd(), 'tests/dummy/config/optional-features.json');
     }
 
     const config = readFileSync(configFile);
@@ -40,6 +43,10 @@ module.exports = {
       }
     });
 
+    const optionalFeatures = require(optionalFeatureFile);
+    optionalFeatures['application-template-wrapper'] = false;
+
+    writeFileSync(optionalFeatureFile, JSON.stringify(optionalFeatures, null, '  '))
     writeFileSync(configFile, recast.print(configAst, { tabWidth: 2, quote: 'single' }).code);
   }
 };
