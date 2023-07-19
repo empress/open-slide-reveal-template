@@ -2,6 +2,7 @@
 	<div class="slides">
     {{#each @slides as |slide|}}
       <section data-markdown>
+        {{!-- template-lint-disable require-input-label --}}
         <textarea data-template>
 {{slide.content}}
 

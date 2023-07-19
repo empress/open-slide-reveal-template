@@ -3,7 +3,7 @@ import Reveal from 'reveal.js';
 import Markdown from 'reveal.js/plugin/markdown/markdown.esm.js';
 import RevealHighlight from 'reveal.js/plugin/highlight/highlight.js';
 
-export default modifier(function reveal(element /*, positional, named*/) {
+export default modifier(function reveal(/* element, positional, named*/) {
   let deck = new Reveal({
     plugins: [Markdown, RevealHighlight],
   });
@@ -11,6 +11,6 @@ export default modifier(function reveal(element /*, positional, named*/) {
     transition: 'none',
     backgroundTransition: 'none',
     hash: true,
-    dependencies: []
+    dependencies: [],
   });
 });

@@ -2,7 +2,6 @@
 
 const funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
-const { map } = require('broccoli-stew');
 const { dirname, join } = require('path');
 
 module.exports = {
@@ -28,9 +27,15 @@ module.exports = {
     let revealOptions = this.options.reveal || {};
 
     this.import('node_modules/reveal.js/dist/reveal.css');
-    this.import(`node_modules/reveal.js/dist/theme/${revealOptions.revealTheme || 'black'}.css`);
     this.import(
-      `node_modules/reveal.js/plugin/highlight/${revealOptions.highlightTheme || 'monokai'}.css`
+      `node_modules/reveal.js/dist/theme/${
+        revealOptions.revealTheme || 'black'
+      }.css`
+    );
+    this.import(
+      `node_modules/reveal.js/plugin/highlight/${
+        revealOptions.highlightTheme || 'monokai'
+      }.css`
     );
   },
 
@@ -41,9 +46,12 @@ module.exports = {
   },
 
   treeForPublic(tree) {
-    let revealPlugins = funnel(join(dirname(require.resolve('reveal.js')), '..', 'plugin'), {
-      destDir: 'plugin',
-    });
+    let revealPlugins = funnel(
+      join(dirname(require.resolve('reveal.js')), '..', 'plugin'),
+      {
+        destDir: 'plugin',
+      }
+    );
 
     return mergeTrees([tree, revealPlugins]);
   },
