@@ -7,7 +7,7 @@ const { readFileSync, writeFileSync } = require('fs');
 const { join } = require('path');
 
 module.exports = {
-  description: 'Default blueprint for open-slide-simplabs-template',
+  description: 'Default blueprint for open-slide-reveal-template',
 
   normalizeEntityName() {
     // no-op
