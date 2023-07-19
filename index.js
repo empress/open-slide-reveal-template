@@ -28,6 +28,7 @@ module.exports = {
     let revealOptions = this.options.reveal || {};
 
     this.import('node_modules/reveal.js/dist/reveal.css');
+    this.import(`node_modules/reveal.js/dist/theme/${revealOptions.revealTheme || 'black'}.css`);
     this.import(
       `node_modules/reveal.js/plugin/highlight/${revealOptions.highlightTheme || 'monokai'}.css`
     );

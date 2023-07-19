@@ -10,39 +10,7 @@ export default modifier(function reveal(element /*, positional, named*/) {
   deck.initialize({
     transition: 'none',
     backgroundTransition: 'none',
-    width: "1280",
-    height: "720",
-    margin: 0.1,
-    center: false,
     hash: true,
-    display: 'flex',
-    dependencies: [
-        // { src: '/plugin/markdown/marked.js' },
-        // { src: '/plugin/markdown/markdown.js' },
-        // { src: '/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-        // { src: '/plugin/notes/notes.js', async: true }
-      ]
+    dependencies: []
   });
 });
-
-
-// script>
-//   if(typeof FastBoot === 'undefined') {
-//     Reveal.initialize({
-//       transition: 'none',
-//       backgroundTransition: 'none',
-//       width: "1280",
-// 			height: "720",
-// 			margin: 0.1,
-// 			center: false,
-//       hash: true,
-//       display: 'flex',
-//       dependencies: [
-// 					{ src: '/plugin/markdown/marked.js' },
-// 					{ src: '/plugin/markdown/markdown.js' },
-// 					{ src: '/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-// 					{ src: '/plugin/notes/notes.js', async: true }
-// 				]
-//     });
-//   }
-// </script>
