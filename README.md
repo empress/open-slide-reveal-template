@@ -1,37 +1,32 @@
-open-slide-reveal-template
-==============================================================================
+# open-slide-reveal-template
 
 [Short description of the addon.]
 
 
-Compatibility
-------------------------------------------------------------------------------
+## Compatibility
 
-* Ember.js v2.18 or above
-* Ember CLI v2.13 or above
+* Ember.js v4.4 or above
+* Ember CLI v4.4 or above
+* Node.js v16 or above
 
 
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```
 ember install open-slide-reveal-template
 ```
 
 
-Usage
-------------------------------------------------------------------------------
+## Usage
 
 [Longer description of how to use the addon in apps.]
 
 
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
 
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).

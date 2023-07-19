@@ -1,7 +1,8 @@
 'use strict';
 
 const funnel = require('broccoli-funnel');
-const { map } = require('broccoli-stew');
+const mergeTrees = require('broccoli-merge-trees');
+const { dirname, join } = require('path');
 
 module.exports = {
   name: require('./package').name,
@@ -10,28 +11,13 @@ module.exports = {
     return ['/'];
   },
 
-  treeForVendor() {
-    let revealLibFiles = funnel('node_modules/reveal.js/', {
-      files: [
-        'js/reveal.js',
-        'plugin/markdown/marked.js',
-        'plugin/markdown/markdown.js',
-        'plugin/highlight/highlight.js'
-      ]
-    });
-
-    revealLibFiles = map(revealLibFiles, (content) => `if (typeof FastBoot === 'undefined') { ${content} }`);
-
-    return revealLibFiles;
-  },
-
   included(app) {
     this._super.included.apply(this, arguments);
 
-    if(!app.options.fingerprint) {
+    if (!app.options.fingerprint) {
       app.options.fingerprint = {
-        exclude: ['plugin/*/*.js']
-      }
+        exclude: ['plugin/*/*.js'],
+      };
     } else {
       app.options.fingerprint.exclude = app.options.fingerprint.exclude || [];
 
@@ -40,18 +26,33 @@ module.exports = {
 
     let revealOptions = this.options.reveal || {};
 
-    this.import('vendor/js/reveal.js');
-
-    app.import('node_modules/reveal.js/css/reset.css');
-    app.import('node_modules/reveal.js/css/reveal.css');
-
-    app.import(`node_modules/reveal.js/css/theme/${revealOptions.theme || 'black'}.css`)
-    app.import(`node_modules/reveal.js/lib/css/${revealOptions.highlightTheme || 'monokai'}.css`)
+    this.import('node_modules/reveal.js/dist/reveal.css');
+    this.import(
+      `node_modules/reveal.js/dist/theme/${
+        revealOptions.revealTheme || 'black'
+      }.css`
+    );
+    this.import(
+      `node_modules/reveal.js/plugin/highlight/${
+        revealOptions.highlightTheme || 'monokai'
+      }.css`
+    );
   },
 
-  treeForPublic() {
-    return funnel('node_modules/reveal.js/plugin/', {
-      destDir: 'plugin'
-    });
-  }
+  contentFor: function (type) {
+    if (type === 'head') {
+      return `<link rel='stylesheet' types='text/css' href='https://fonts.googleapis.com/css?family=Nunito+Sans:300,700'>`;
+    }
+  },
+
+  treeForPublic(tree) {
+    let revealPlugins = funnel(
+      join(dirname(require.resolve('reveal.js')), '..', 'plugin'),
+      {
+        destDir: 'plugin',
+      }
+    );
+
+    return mergeTrees([tree, revealPlugins]);
+  },
 };
