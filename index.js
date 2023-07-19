@@ -1,7 +1,9 @@
 'use strict';
 
 const funnel = require('broccoli-funnel');
+const mergeTrees = require('broccoli-merge-trees');
 const { map } = require('broccoli-stew');
+const { dirname, join } = require('path');
 
 module.exports = {
   name: require('./package').name,
@@ -31,8 +33,8 @@ module.exports = {
     );
   },
 
-  contentFor: function(type){
-    if (type === 'head'){
+  contentFor: function (type) {
+    if (type === 'head') {
       return `<link rel='stylesheet' types='text/css' href='https://fonts.googleapis.com/css?family=Nunito+Sans:300,700'>`;
     }
   },
