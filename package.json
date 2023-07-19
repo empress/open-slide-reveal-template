@@ -73,7 +73,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-qunit": "^8.0.0",
     "loader.js": "^4.7.0",
-    "open-slide": "^0.1.3",
+    "open-slide": "^1.0.0",
     "prember": "^2.0.0",
     "prettier": "^2.8.8",
     "qunit": "^2.19.4",
@@ -96,5 +96,8 @@
     "configPath": "tests/dummy/config",
     "before": "broccoli-asset-rev"
   },
-  "fastbootDependencies": ["crypto", "node-fetch"]
+  "fastbootDependencies": [
+    "crypto",
+    "node-fetch"
+  ]
 }
