@@ -1,1 +1,1 @@
-export { default } from 'open-slide-simplabs-template/components/reveal-slides';
+export { default } from 'open-slide-reveal-template/components/reveal-slides';

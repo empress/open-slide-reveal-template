@@ -10,28 +10,13 @@ module.exports = {
     return ['/'];
   },
 
-  treeForVendor() {
-    let revealLibFiles = funnel('node_modules/reveal.js/', {
-      files: [
-        'js/reveal.js',
-        'plugin/markdown/marked.js',
-        'plugin/markdown/markdown.js',
-        'plugin/highlight/highlight.js'
-      ]
-    });
-
-    revealLibFiles = map(revealLibFiles, (content) => `if (typeof FastBoot === 'undefined') { ${content} }`);
-
-    return revealLibFiles;
-  },
-
   included(app) {
     this._super.included.apply(this, arguments);
 
-    if(!app.options.fingerprint) {
+    if (!app.options.fingerprint) {
       app.options.fingerprint = {
-        exclude: ['plugin/*/*.js']
-      }
+        exclude: ['plugin/*/*.js'],
+      };
     } else {
       app.options.fingerprint.exclude = app.options.fingerprint.exclude || [];
 
@@ -40,13 +25,10 @@ module.exports = {
 
     let revealOptions = this.options.reveal || {};
 
-    this.import('vendor/js/reveal.js');
-
-    app.import('node_modules/reveal.js/css/reset.css');
-    app.import('node_modules/reveal.js/css/reveal.css');
-
-    app.import('vendor/simplabs.css')
-    app.import(`node_modules/reveal.js/lib/css/${revealOptions.highlightTheme || 'monokai'}.css`)
+    this.import('node_modules/reveal.js/dist/reveal.css');
+    this.import(
+      `node_modules/reveal.js/plugin/highlight/${revealOptions.highlightTheme || 'monokai'}.css`
+    );
   },
 
   contentFor: function(type){
@@ -55,9 +37,11 @@ module.exports = {
     }
   },
 
-  treeForPublic() {
-    return funnel('node_modules/reveal.js/plugin/', {
-      destDir: 'plugin'
+  treeForPublic(tree) {
+    let revealPlugins = funnel(join(dirname(require.resolve('reveal.js')), '..', 'plugin'), {
+      destDir: 'plugin',
     });
-  }
+
+    return mergeTrees([tree, revealPlugins]);
+  },
 };

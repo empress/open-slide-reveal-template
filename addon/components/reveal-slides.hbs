@@ -1,0 +1,16 @@
+<div class="reveal" {{reveal}}>
+	<div class="slides">
+    {{#each @slides as |slide|}}
+      <section data-markdown>
+        <textarea data-template>
+{{slide.content}}
+
+{{#if slide.notes}}
+Note:
+{{slide.notes}}
+{{/if}}
+        </textarea>
+      </section>
+    {{/each}}
+	</div>
+</div>
